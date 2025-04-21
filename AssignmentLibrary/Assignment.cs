@@ -7,7 +7,7 @@ public class Assignment
 
     public Assignment(string title, string description)
     {
-        Validate(title, nameof(title));
+        ValidateInputs(title, description);
 
         Title = title;
         Description = description;
