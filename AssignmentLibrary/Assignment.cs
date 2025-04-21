@@ -2,6 +2,8 @@ namespace AssignmentLibrary;
 
 public class Assignment
 {
+    private const string BlankFieldMessage = "{0} cannot be blank or whitespace.";
+
     public string Title { get; private set; }
     public string Description { get; private set; }
 
@@ -15,7 +17,6 @@ public class Assignment
 
     public void Update(string newTitle, string newDescription)
     {
-        // BUG: Missing validation here
         ValidateInputs(newTitle, newDescription);
 
         Title = newTitle;
@@ -25,7 +26,7 @@ public class Assignment
     private void Validate(string input, string fieldName)
     {
         if (string.IsNullOrWhiteSpace(input))
-            throw new ArgumentException($"{fieldName} cannot be blank or whitespace.");
+            throw new ArgumentException(string.Format(BlankFieldMessage, fieldName));
     }
 
     private void ValidateInputs(string title, string description)
