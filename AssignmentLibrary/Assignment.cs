@@ -8,7 +8,6 @@ public class Assignment
     public Assignment(string title, string description)
     {
         Validate(title, nameof(title));
-        Validate(description, nameof(description));
 
         Title = title;
         Description = description;
@@ -17,8 +16,7 @@ public class Assignment
     public void Update(string newTitle, string newDescription)
     {
         // BUG: Missing validation here
-        Validate(newTitle, nameof(newTitle));
-        Validate(newDescription, nameof(newDescription));
+        ValidateInputs(newTitle, newDescription);
 
         Title = newTitle;
         Description = newDescription;
@@ -28,5 +26,11 @@ public class Assignment
     {
         if (string.IsNullOrWhiteSpace(input))
             throw new ArgumentException($"{fieldName} cannot be blank or whitespace.");
+    }
+
+    private void ValidateInputs(string title, string description)
+    {
+        Validate(title, nameof(title));
+        Validate(description, nameof(description));
     }
 }
