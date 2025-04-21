@@ -17,6 +17,9 @@ public class Assignment
     public void Update(string newTitle, string newDescription)
     {
         // BUG: Missing validation here
+        Validate(newTitle, nameof(newTitle));
+        Validate(newDescription, nameof(newDescription));
+
         Title = newTitle;
         Description = newDescription;
     }
